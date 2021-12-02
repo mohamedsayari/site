@@ -11,5 +11,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+signup( form : any) {
+  console.log( form)
+}
 }
