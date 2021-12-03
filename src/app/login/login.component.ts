@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from '@angular/forms';
+import { FormGroup, FormBuilder } from  '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,10 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  contactForm  : any ;
+  constructor(private formBuilder: FormBuilder) {
+    this.createContactForm();
+   }
 
   ngOnInit(): void {
   }
-  
-
+  createContactForm(){
+    this.contactForm = this.formBuilder.group({
+      fullName: [''],  
+      email: [''],
+      message: ['']
+    });
+  }
+  onSubmit(form: NgForm) {
+    console.log('Your form data : ', this.contactForm.value );
+  }
 }
+
+

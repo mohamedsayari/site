@@ -14,4 +14,9 @@ export class RegisterComponent implements OnInit {
 signup( form : any) {
   console.log( form)
 }
+onChangeEvent(event: any){
+
+  console.log(event.target.value);
+
+}
 }

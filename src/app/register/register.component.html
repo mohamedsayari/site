@@ -17,16 +17,16 @@
                 
                 <div class="card-body px-lg-5 py-lg-5">
                    
-                    <form role="form"  class="fw-bolder"  #f="ngForm" (ngSubmit)="signup(f)">
+                    <form role="form"  class="fw-bolder"  #f="ngForm" >
                         <div class="form-group">
                             <div class="input-group input-group-alternative
                              mb-3">
                                 <div class="input-group-prepend">
-                  
+             
                                 </div>
                             <div>
                                 <input ngModel name="name" #name="ngModel" required
-                                class="form-control" placeholder="Name" type="text"> 
+                                class="form-control" placeholder="Name" type="text" change="onChangeEvent(r)" > 
                             </div>
                             <div class="alert alert-danger" *ngIf="name.invalid && name.touched">Name is required</div>
                         </div>
@@ -37,7 +37,7 @@
                                 <input ngModel name="email" #email="ngModel" required email
                                  class="form-control" placeholder="Email" type="email">
                             </div>
-                                 <div class="alert alert-danger" *ngIf="name.invalid && name.errors?.required">Email is required</div>
+                                 <div class="alert alert-danger" *ngIf="name.invalid && name.touched">Email is required</div>
                                  <div class="alert alert-danger" *ngIf="name.invalid && name.errors?.email">not email</div>
                                 </div>
                         </div>
