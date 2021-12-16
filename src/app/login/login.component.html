@@ -1,13 +1,47 @@
-<h1> Reactive Contact Form Example </h1>
+<!-- main app container -->
 
-<form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)">
-  <input type = "text" name = "fullName" placeholder = "Your full name" formControlName="fullName" >
-  <br/>
+  <div class="container mt--8 pb-5">
+    <div class="row justify-content-center"  >
+        <div class="col-lg-5 col-md-7">
+            <div class="card-header shadow border-0">
+                <div class="text-center">
+                    <a href="javascript:void(0)" class="btn btn-neutral btn-icon mr-4">
+                        <span class="btn-inner--icon"><img src="assets/img/icons/common/github.svg"></span>
+                        <span class="btn-inner--text">Github</span>
+                    </a>
+                           </div>
+              <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                
+                  <div class="form-group"  >
+                     
+                      <label   >Email</label>
+                     <i class="bi bi-envelope-fill"></i>
+                      <input type="text" 
+                      #email   (input)="getData(email.value)"
+                      
+                      formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
 
-  <input type = "email" name = "email" placeholder = "Your email" formControlName="email" >
-  <br/>
+                          <div *ngIf="f.email.errors.required">Email is required</div>
+                          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label>Password</label>
+                      <input type="password"
+                      #password   (input)="getData(password.value)"
+                      formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                          <div *ngIf="f.password.errors.required">Password is required</div>
+                          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <button class="btn btn-primary">Register</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
 
-  <textarea name = "message" placeholder = "Your message" formControlName="message" ></textarea>
-  <br/>
-  <input type = "submit" value = "Send">
-</form>
