@@ -15,53 +15,51 @@
                 </div>
                 
                 
-                <div class="card-body px-lg-5 py-lg-5">
-                   
-                    <form role="form"  class="fw-bolder"  #f="ngForm" >
-                        <div class="form-group">
-                            <div class="input-group input-group-alternative
-                             mb-3">
-                                <div class="input-group-prepend">
-             
+                
+                            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" 
+                                    #firstName   (input)="getData(firstName.value)"
+                                    formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                                    </div>
                                 </div>
-                            <div>
-                                <input ngModel name="name" #name="ngModel" required
-                                class="form-control" placeholder="Name" type="text" change="onChangeEvent(r)" > 
-                            </div>
-                            <div class="alert alert-danger" *ngIf="name.invalid && name.touched">Name is required</div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" 
+                                    #lastName   (input)="getData(lastName.value)"
+                                    formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text"
+                                    #email   (input)="getData(email.value)"
+                                    formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.email.errors.required">Email is required</div>
+                                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password"
+                                    #password   (input)="getData(password.value)"
+                                    formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                        <div *ngIf="f.password.errors.required">Password is required</div>
+                                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary">Register</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                        <div class="form-group">
-                            <div class="input-group input-group-alternative mb-3">
-                            <div>
-                                <input ngModel name="email" #email="ngModel" required email
-                                 class="form-control" placeholder="Email" type="email">
-                            </div>
-                                 <div class="alert alert-danger" *ngIf="name.invalid && name.touched">Email is required</div>
-                                 <div class="alert alert-danger" *ngIf="name.invalid && name.errors?.email">not email</div>
-                                </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group input-group-alternative">
-
-                                <input input ngModel name="password" #password="ngModel" required minlength="6"
-                                class="form-control" placeholder="Password" type="password">
-                            </div>
-                            <div class="alert alert-danger" *ngIf="name.invalid && name.touched"> password is required</div>
-                        </div>
-                        <div class="row my-4">
-                            <div class="col-12">
-                             
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <button  (click)="signup(f)"
-                            type="button" class="btn btn-primary mt-4" >Create account</button>
-                        </div>
-                    </form>
-        
-            </div>
-        </div>
-    </div>
-    </div>
+                </div>
 </div>

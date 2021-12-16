@@ -15,11 +15,16 @@
                   <div class="form-group"  >
                      
                       <label   >Email</label>
-                     <i class="bi bi-envelope-fill"></i>
-                      <input type="text" 
+                      <div style="border: 1px solid #DDD;">
+                        <span class="material-icons">
+                            email
+                            </span>
+                      <input type="text"  style="border: none;"
                       #email   (input)="getData(email.value)"
                       
                       formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                     
+                     </div>
                       <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
 
                           <div *ngIf="f.email.errors.required">Email is required</div>
