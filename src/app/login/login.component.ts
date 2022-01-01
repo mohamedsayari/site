@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
-
+import {MatIconModule} from '@angular/material/icon';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-login',
@@ -9,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+    hide = true;
  registerForm = new FormGroup({
    
   });
@@ -40,5 +43,6 @@ export class LoginComponent implements OnInit {
     
     getData(x:any){
         console.log(x);}
+        
 }
 

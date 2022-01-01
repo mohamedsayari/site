@@ -5,6 +5,9 @@
 export const environment = {
   production: false
 };
+export const host = {
+  host : "local"
+};
 
 /*
  * For easier debugging in development mode, you can import the following file
