@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
@@ -26,7 +28,8 @@ import { TestComponent } from './test/test.component';
    ReactiveFormsModule,
    MatIconModule,
    MatFormFieldModule,
-   MatCardModule
+   MatCardModule,
+   HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

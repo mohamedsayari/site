@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -16,10 +16,14 @@ export class LoginComponent implements OnInit {
    
   });
  submitted = false;
+ 
 
-    constructor(private formBuilder: FormBuilder) { }
+    constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
 
     ngOnInit() {
+        console.log("Payload = " + this.http.get('https://jsonplaceholder.typicode.com/users'));
+        this.http.get('https://jsonplaceholder.typicode.com/users').subscribe((res)=>{console.log('reees',res)})
+        
         this.registerForm = this.formBuilder.group({
     
             email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
